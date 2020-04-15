@@ -1,0 +1,36 @@
+<div 
+  class="md-modal" 
+  [class]="config.transition" 
+  [id]="config.type" 
+  [ngClass]="{'md-show' : visible}" 
+  [ngStyle]="{'width':width}">
+  <div class="md-content" [ngStyle]="modalStyle">
+    <mat-card [ngStyle]="{'min-height':height}">
+      <!-- <mat-toolbar class="modal-header" [ngStyle]="{'color':'#CCC'}">
+        <ng-content select=".modal-title"></ng-content>s
+      </mat-toolbar> -->
+      <!-- <mat-card-content> -->
+      <ng-container *ngTemplateOutlet="fragment"></ng-container>
+      <!-- <pre>{{data | json}}</pre> -->
+      <!-- </mat-card-content> -->
+      <ng-template [ngIf]="showDefaultAction">
+        <mat-card-actions class="modal-action" [ngStyle]="{'text-align':options.alignButtons ? options.alignButtons : 'right'}">
+          <div class="button-row">
+            <button 
+              mat-raised-button 
+              color="primary" 
+              class="btn-cancel default-color" 
+              (click)="cancel(data)">{{options?.cancelText ? options.cancelText : 'Cancel'}}
+            </button>&nbsp; &nbsp;
+            <button 
+              mat-raised-button color="primary" 
+              class="btn-confirm secondary-color" 
+              (click)="confirm(data)">{{options.confirmText ? options.confirmText : 'Confirm'}}
+            </button>
+          </div>
+        </mat-card-actions>
+      </ng-template>
+    </mat-card>
+  </div>
+</div>
+<div class="md-overlay"></div>

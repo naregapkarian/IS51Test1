@@ -1,0 +1,26 @@
+<app-modal #modal 
+  [modalStyle]="modalStyle" 
+  [fragment]="partial" 
+  [showDefaultAction]="showDefaultAction"
+  [modalID]="modalID"
+  [width]="width" 
+  [height]="height" 
+  [transition]="transition"
+  [options]="options"
+  (onConfirm)="confirm($event)"
+  (onCancel)="cancel($event)">
+
+  <!-- <span md-dialog-title class="modal-title">{{title}}</span> -->
+  <ng-template #partial>
+    <mat-toolbar *ngIf="showToolbar" class="modal-header" [ngStyle]="{'color':'#CCC'}">
+      <ng-content select=".modal-title"></ng-content>
+    </mat-toolbar>
+    <mat-card-content>
+      <ng-content select=".modal-content"></ng-content>
+    </mat-card-content>
+    <mat-card-actions *ngIf="showAction" class="modal-actions">
+      <hr>
+      <ng-content select=".modal-action"></ng-content>
+    </mat-card-actions>
+  </ng-template>
+</app-modal>
